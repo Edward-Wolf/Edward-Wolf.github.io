@@ -4,14 +4,14 @@ error_reporting(-1);
 ini_set('display_errors', 'On');
 set_error_handler("var_dump");
 
-if(isset($_POST['submit'])){
+if(isset($_GET['submit'])){
     $to = "edward.james.wolf@gmail.com"; // this is your Email address
-    $from = $_POST['email']; // this is the sender's Email address
-    $name = $_POST['name'];
-    $subject = $_POST['subject'];
+    $from = $_GET['email']; // this is the sender's Email address
+    $name = $_GET['name'];
+    $subject = $_GET['subject'];
     $subject2 = "Copy of" . $subject;
-    $message = $name . " wrote the following:" . "\n\n" . $_POST['comment'];
-    $message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['comment'];
+    $message = $name . " wrote the following:" . "\n\n" . $_GET['comment'];
+    $message2 = "Here is a copy of your message " . $name . "\n\n" . $_GET['comment'];
 
     $headers = array("From: " . $from,
     "Reply-To: " . $to,
