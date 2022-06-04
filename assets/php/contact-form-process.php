@@ -3,8 +3,8 @@ if(isset($_POST['submit'])){
     $to = "edward.james.wolf@gmail.com"; // this is your Email address
     $from = $_POST['email']; // this is the sender's Email address
     $name = $_POST['name'];
-    $subject = "Form submission";
-    $subject2 = "Copy of your form submission";
+    $subject = $_POST['subject'];
+    $subject2 = "Copy of" . $subject;
     $message = $name . " wrote the following:" . "\n\n" . $_POST['comment'];
     $message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['comment'];
 
