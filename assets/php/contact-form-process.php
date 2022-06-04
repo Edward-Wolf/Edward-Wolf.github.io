@@ -1,18 +1,18 @@
-<?PHP
+<?php 
+if(isset($_POST['submit'])){
+    $to = "edward.james.wolf@gmail.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $name = $_POST['name'];
+    $subject = "Form submission";
+    $subject2 = "Copy of your form submission";
+    $message = $name . " wrote the following:" . "\n\n" . $_POST['comment'];
+    $message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['comment'];
 
-error_reporting(-1);
-ini_set('display_errors', 'On');
-set_error_handler("var_dump");
-
-$email = $_POST["email"];
-$to = "edward.james.wolf@gmail.com";
-$subject = $_POST["subject"];
-$headers = "From: $email\n";
-$message = $_POST["message"];
-$user = "$email";
-$usersubject = "Thank You";
-$userheaders = "From: edward.james.wolf@gmail.com\n";
-$usermessage = "Thank you for emailing me. I will respond within 24 hours";
-mail($to,$subject,$message,$headers);
-mail($user,$usersubject,$usermessage,$userheaders);
+    $headers = "From:" . $from;
+    $headers2 = "To:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    }
 ?>
